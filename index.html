@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anais Howland | Founder & Product Builder</title>
+<meta name="description" content="Portfolio of Anais Howland. From Wall Street portfolio manager to Google product lead to AI founder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#1a1a1f;
+  --bg-elevated:#222228;
+  --bg-card:#27272d;
+  --text-primary:#f0ece4;
+  --text-secondary:#a8a4a0;
+  --text-tertiary:#706c68;
+  --accent:#d4915e;
+  --accent-glow:#d4915e22;
+  --accent-subtle:#d4915e18;
+  --border:#333338;
+  --border-light:#2a2a30;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --nav-height:72px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-height)}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text-primary);
+  line-height:1.7;
+  font-weight:300;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── Grain overlay ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:128px;
+}
+
+/* ── Nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--nav-height);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(24px,5vw,80px);
+  background:rgba(26,26,31,.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-light);
+  transition:background .3s;
+}
+nav .logo{
+  font-family:var(--serif);font-size:1.25rem;
+  color:var(--text-primary);text-decoration:none;letter-spacing:-.01em;
+}
+nav .logo span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:32px}
+nav ul a{
+  color:var(--text-secondary);text-decoration:none;font-size:.85rem;
+  font-weight:400;letter-spacing:.03em;text-transform:uppercase;
+  transition:color .25s;position:relative;
+}
+nav ul a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--accent);transition:width .3s ease;
+}
+nav ul a:hover{color:var(--text-primary)}
+nav ul a:hover::after{width:100%}
+
+.nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;padding:8px}
+
+/* ── Shared ── */
+section{padding:clamp(80px,12vh,140px) clamp(24px,5vw,80px)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;
+  color:var(--accent);font-weight:500;margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.section-title{
+  font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1.15;margin-bottom:clamp(32px,4vh,56px);
+  color:var(--text-primary);font-weight:400;
+}
+
+/* ── Reveal animation ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:var(--nav-height);
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;top:0;right:0;
+  width:45%;height:100%;
+  background:radial-gradient(ellipse at 70% 40%,var(--accent-glow) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero .container{
+  display:grid;grid-template-columns:1fr auto;gap:clamp(40px,6vw,100px);
+  align-items:center;width:100%;
+}
+.hero-text{max-width:620px}
+.hero-eyebrow{
+  font-size:.8rem;text-transform:uppercase;letter-spacing:.18em;
+  color:var(--accent);font-weight:500;margin-bottom:20px;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.hero-eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.5rem);
+  line-height:1.05;margin-bottom:24px;font-weight:400;letter-spacing:-.02em;
+}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-intro{
+  font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--text-secondary);
+  max-width:520px;margin-bottom:36px;line-height:1.75;
+}
+.hero-links{display:flex;gap:16px;align-items:center}
+.hero-links a{
+  color:var(--text-tertiary);transition:color .25s,transform .25s;
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--border);
+}
+.hero-links a:hover{color:var(--accent);transform:translateY(-2px);border-color:var(--accent)}
+.hero-links a svg{width:18px;height:18px}
+
+.headshot-wrapper{
+  position:relative;z-index:1;
+}
+.headshot-wrapper::before{
+  content:'';position:absolute;inset:-8px;border-radius:50%;
+  border:1px solid var(--accent);opacity:.3;
+}
+.headshot-wrapper::after{
+  content:'';position:absolute;inset:-20px;border-radius:50%;
+  border:1px dashed var(--border);opacity:.4;
+  animation:spin 40s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.headshot{
+  width:clamp(200px,22vw,300px);height:clamp(200px,22vw,300px);
+  border-radius:50%;object-fit:cover;object-position:center top;
+  display:block;position:relative;
+  filter:grayscale(10%) contrast(1.03);
+}
+
+/* ── About ── */
+.about{background:var(--bg-elevated)}
+.about-content{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);
+}
+.about-content p{color:var(--text-secondary);font-size:1.05rem;line-height:1.85}
+.about-content p strong{color:var(--text-primary);font-weight:500}
+.about-highlights{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  align-content:start;margin-top:8px;
+}
+.highlight-card{
+  padding:20px;border-radius:12px;border:1px solid var(--border);
+  background:var(--bg);
+}
+.highlight-card .num{
+  font-family:var(--serif);font-size:1.6rem;color:var(--accent);
+  line-height:1.2;margin-bottom:4px;
+}
+.highlight-card .label{font-size:.8rem;color:var(--text-tertiary);letter-spacing:.04em}
+
+/* ── Current Work ── */
+.stealth-card{
+  border:1px solid var(--border);border-radius:16px;
+  padding:clamp(32px,4vw,56px);
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--bg-card) 0%,var(--bg-elevated) 100%);
+}
+.stealth-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:300px;height:300px;
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);
+  pointer-events:none;
+}
+.stealth-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--accent);background:var(--accent-subtle);
+  padding:6px 16px;border-radius:100px;margin-bottom:24px;
+  border:1px solid rgba(212,145,94,.15);
+}
+.stealth-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+.stealth-card h3{
+  font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);
+  margin-bottom:16px;font-weight:400;
+}
+.stealth-card .desc{
+  color:var(--text-secondary);max-width:640px;margin-bottom:28px;
+  font-size:1.05rem;line-height:1.8;
+}
+.tech-pills{display:flex;flex-wrap:wrap;gap:10px}
+.tech-pills span{
+  font-size:.78rem;padding:6px 16px;border-radius:100px;
+  border:1px solid var(--border);color:var(--text-secondary);
+  background:var(--bg);letter-spacing:.02em;
+  transition:border-color .25s,color .25s;
+}
+.tech-pills span:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── Projects ── */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.project-card{
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  background:var(--bg-card);
+  transition:border-color .35s,transform .35s;
+  display:flex;flex-direction:column;
+}
+.project-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.project-card .card-img{
+  overflow:hidden;position:relative;height:220px;
+  background:var(--bg);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.project-card .card-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.16,1,.3,1);
+}
+.project-card:hover .card-img img{transform:scale(1.03)}
+.project-card .card-visual{
+  height:220px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--bg) 0%,var(--bg-elevated) 100%);
+}
+.project-card .card-visual .visual-icon{
+  font-size:3rem;opacity:.15;position:absolute;
+}
+.project-card .card-visual .visual-label{
+  font-family:var(--serif);font-size:1.4rem;color:var(--accent);
+  opacity:.7;position:relative;z-index:1;text-align:center;padding:0 24px;line-height:1.4;
+}
+.project-card .card-body{padding:clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.project-card .card-body h3{
+  font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.5rem);
+  margin-bottom:10px;font-weight:400;line-height:1.25;
+}
+.project-card .card-body p{
+  color:var(--text-secondary);font-size:.9rem;line-height:1.7;
+  margin-bottom:16px;
+}
+.project-card .card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:auto}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px}
+.project-tags span{
+  font-size:.72rem;padding:4px 12px;border-radius:100px;
+  background:var(--bg);color:var(--text-tertiary);
+  letter-spacing:.03em;border:1px solid var(--border-light);
+}
+.project-link{
+  color:var(--accent);text-decoration:none;font-size:.85rem;
+  font-weight:400;display:inline-flex;align-items:center;gap:6px;
+  transition:gap .25s;
+}
+.project-link:hover{gap:10px}
+.project-link svg{width:14px;height:14px}
+
+/* ── Small project grid (side projects) ── */
+.small-projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:24px}
+.small-card{
+  border:1px solid var(--border);border-radius:14px;padding:clamp(24px,3vw,32px);
+  background:var(--bg-card);transition:border-color .35s,transform .35s;
+}
+.small-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.small-card h3{
+  font-family:var(--serif);font-size:1.2rem;margin-bottom:10px;font-weight:400;
+}
+.small-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.7;margin-bottom:16px}
+
+/* ── Side projects ── */
+.side-projects{background:var(--bg-elevated)}
+
+/* ── Footer ── */
+footer{
+  padding:clamp(60px,8vh,100px) clamp(24px,5vw,80px);
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+footer h2{
+  font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:16px;font-weight:400;
+}
+footer p{color:var(--text-secondary);margin-bottom:32px;font-size:1.05rem}
+footer .footer-links{display:flex;justify-content:center;gap:16px;margin-bottom:48px}
+footer .footer-links a{
+  color:var(--text-tertiary);transition:color .25s;
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--border);
+}
+footer .footer-links a:hover{color:var(--accent);border-color:var(--accent)}
+footer .footer-links a svg{width:18px;height:18px}
+footer .copyright{color:var(--text-tertiary);font-size:.8rem}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .hero .container{grid-template-columns:1fr;text-align:center}
+  .hero-text{max-width:100%}
+  .hero-intro{margin-left:auto;margin-right:auto}
+  .hero-links{justify-content:center}
+  .headshot-wrapper{order:-1;margin:0 auto 20px}
+  .headshot{width:180px;height:180px}
+  .about-content{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card .card-img{max-height:220px}
+  nav ul{
+    position:fixed;top:var(--nav-height);left:0;right:0;
+    background:rgba(26,26,31,.97);backdrop-filter:blur(20px);
+    flex-direction:column;align-items:center;gap:0;
+    padding:16px 0;border-bottom:1px solid var(--border);
+    transform:translateY(-120%);transition:transform .35s ease;
+    z-index:99;
+  }
+  nav ul.open{transform:translateY(0)}
+  nav ul a{padding:14px 0;display:block}
+  .nav-toggle{display:block}
+  .about-highlights{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+  .about-highlights{grid-template-columns:1fr}
+  .small-projects{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a href="#" class="logo">A<span>.</span>H</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#current">Current</a></li>
+    <li><a href="#opensource">Open Source</a></li>
+    <li><a href="#side-projects">Side Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-text">
+      <div class="hero-eyebrow reveal">Founder &amp; Product Builder</div>
+      <h1 class="reveal reveal-delay-1">Anais<br><em>Howland</em></h1>
+      <p class="hero-intro reveal reveal-delay-2">Wall Street portfolio manager turned Google product lead turned AI founder. I've managed $300B+ in fixed income assets, shaped GenAI strategy at Google, built and open-sourced agent evaluation infrastructure, and now I'm building the AI analyst for the bond market.</p>
+      <div class="hero-links reveal reveal-delay-3">
+        <a href="https://github.com/anaishowland" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/anaishowland/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/AnaisHowland18" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="mailto:anaisaddad@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="headshot-wrapper reveal reveal-delay-2">
+      <img src="assets/headshot.jpeg" alt="Anais Howland" class="headshot" width="300" height="300">
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label reveal">Background</div>
+    <h2 class="section-title reveal reveal-delay-1">From Wall Street<br>to building in AI</h2>
+    <div class="about-content">
+      <div>
+        <p class="reveal reveal-delay-2">I started my career in fixed income, first at <strong>Wells Fargo</strong> managing a $300B+ mortgage-backed securities portfolio, then at <strong>Google Treasury</strong> managing a $17B MBS/ABS portfolio. I moved into product at Google, working on <strong>GenAI strategy across Search, Ads, Gemini, Shopping, and Maps</strong>.</p>
+        <br>
+        <p class="reveal reveal-delay-3">In 2024, I left to build my first company, <strong>Paradigm Shift AI</strong>, in the computer-use agent evaluation space. I taught myself to code, built the product from scratch, and landed major customers. All of the core infrastructure I built is now open source.</p>
+      </div>
+      <div class="about-highlights reveal reveal-delay-3">
+        <div class="highlight-card">
+          <div class="num">$317B+</div>
+          <div class="label">Assets managed</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">7</div>
+          <div class="label">OSS repos released</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">50GB</div>
+          <div class="label">Dataset published</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">9 years</div>
+          <div class="label">5 on Wall St, 4 in product/AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Current Work ── -->
+<section id="current">
+  <div class="container">
+    <div class="section-label reveal">What I'm Building Now</div>
+    <h2 class="section-title reveal reveal-delay-1">Current work</h2>
+    <a href="https://www.oasive.ai" target="_blank" rel="noopener" class="stealth-card reveal reveal-delay-2" style="text-decoration:none;color:inherit;display:block">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+        <img src="assets/oasive-logo.jpeg" alt="Oasive" style="height:36px;border-radius:6px">
+        <div class="stealth-badge" style="margin-bottom:0">Currently in stealth</div>
+      </div>
+      <h3>AI Analyst for Fixed Income</h3>
+      <p class="desc">Building an AI copilot for bond market professionals. The system translates natural language into structured database queries across millions of securities, performs empirical analysis, and generates investment-grade research reports.</p>
+      <div class="tech-pills">
+        <span>AI Agent Orchestration</span>
+        <span>NLP-to-SQL</span>
+        <span>Cloud Infrastructure (GCP)</span>
+        <span>Next.js + FastAPI</span>
+        <span>PostgreSQL + pgvector</span>
+        <span>LLM Validation Pipeline</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── Open Source ── -->
+<section class="side-projects" id="opensource">
+  <div class="container">
+    <div class="section-label reveal">Open Source</div>
+    <h2 class="section-title reveal reveal-delay-1">Paradigm Shift AI</h2>
+    <p class="reveal reveal-delay-2" style="color:var(--text-secondary);max-width:680px;margin-bottom:48px;font-size:1.05rem;line-height:1.8">I built evaluation infrastructure for computer-use AI agents. After winding down the company, I open-sourced everything under MIT license.</p>
+
+    <div class="projects-grid">
+
+      <!-- Neurosim + Agent-CE (eval framework + agent integrations) -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="card-img">
+          <img src="assets/start_run_screenshot.jpg" alt="NeuroSim evaluation run interface" loading="lazy" width="800" height="500">
+        </div>
+        <div class="card-body">
+          <h3>Neurosim + Agent-CE</h3>
+          <p>Large-scale browser agent evaluation framework with containerized execution, automated LLM judging, and standardized metrics. Agent-CE provides production-ready Docker images and CI/CD pipelines for Browser Use, Notte, Anthropic CUA, and OpenAI CUA.</p>
+          <div class="card-footer">
+            <div class="project-tags">
+              <span>Python</span><span>GCP</span><span>Docker</span><span>CI/CD</span><span>Evals</span>
+            </div>
+            <div style="display:flex;gap:12px">
+              <a href="https://github.com/anaishowland/neurosim" target="_blank" rel="noopener" class="project-link">Neurosim <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+              <a href="https://github.com/anaishowland/agent-CE" target="_blank" rel="noopener" class="project-link">Agent-CE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Computer Use Dataset -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="card-visual">
+          <div class="visual-icon" style="font-size:8rem;top:20px;right:-20px">&#x1F4BE;</div>
+          <div class="visual-label">3,100+ tasks<br>50GB of data</div>
+        </div>
+        <div class="card-body">
+          <h3>Computer Use Dataset</h3>
+          <p>50GB dataset with 3,100+ human-computer interaction tasks including full screen recordings, event logs, DOM snapshots, and metadata. Published on HuggingFace for the research community.</p>
+          <div class="card-footer">
+            <div class="project-tags">
+              <span>HuggingFace</span><span>Dataset</span><span>50GB</span>
+            </div>
+            <a href="https://huggingface.co/datasets/anaisleila/computer-use-data-psai" target="_blank" rel="noopener" class="project-link">View dataset <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eval Analytics Platform -->
+      <div class="project-card reveal">
+        <div class="card-img">
+          <img src="assets/analytics_screenshot.jpg" alt="Eval analytics dashboard" loading="lazy" width="800" height="500">
+        </div>
+        <div class="card-body">
+          <h3>Eval Analytics Platform</h3>
+          <p>Full-stack analytics dashboard I designed and built for visualizing agent evaluation results: success rates, efficiency metrics, LLM judge scores, and task-level breakdowns across 10,000+ tasks.</p>
+          <div class="card-footer">
+            <div class="project-tags">
+              <span>React</span><span>Data Visualization</span><span>Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LLM-as-a-Judge -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="card-img">
+          <img src="assets/browseruse_eval.gif" alt="Browser Use 10K evaluation run" loading="lazy" width="800" height="500">
+        </div>
+        <div class="card-body">
+          <h3>LLM-as-a-Judge</h3>
+          <p>Task-focused LLM judge that scores computer-use agent trajectories from 0 to 100, explains reasoning, and tags common failure modes.</p>
+          <div class="card-footer">
+            <div class="project-tags">
+              <span>Python</span><span>LLM Evaluation</span>
+            </div>
+            <a href="https://github.com/anaishowland/llm-judge-psai" target="_blank" rel="noopener" class="project-link">View code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Captr -->
+      <div class="project-card reveal">
+        <div class="card-visual">
+          <div class="visual-icon" style="font-size:7rem;top:30px;right:-10px">&#x1F3AC;</div>
+          <div class="visual-label">Screen + DOM + A11y<br>capture for CUA</div>
+        </div>
+        <div class="card-body">
+          <h3>Captr</h3>
+          <p>Cross-platform screen and interaction recorder capturing video, keyboard/mouse events, DOM snapshots, accessibility trees, and metadata for training computer-use agents.</p>
+          <div class="card-footer">
+            <div class="project-tags">
+              <span>Python</span><span>macOS</span><span>Windows</span>
+            </div>
+            <div style="display:flex;gap:12px">
+              <a href="https://github.com/anaishowland/Captr_MacOS" target="_blank" rel="noopener" class="project-link">macOS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+              <a href="https://github.com/anaishowland/Captr_Windows" target="_blank" rel="noopener" class="project-link">Windows <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dataset Toolkit -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="card-visual">
+          <div class="visual-icon" style="font-size:7rem;top:30px;right:-10px">&#x1F9EA;</div>
+          <div class="visual-label">Auto-generated<br>web agent benchmarks</div>
+        </div>
+        <div class="card-body">
+          <h3>Dataset Toolkit</h3>
+          <p>Toolkit for generating and tagging high-quality web agent benchmarks with automatic task generation from websites and hierarchical categorization.</p>
+          <div class="card-footer">
+            <div class="project-tags">
+              <span>Python</span><span>Benchmarks</span>
+            </div>
+            <a href="https://github.com/anaishowland/dataset_creation" target="_blank" rel="noopener" class="project-link">View code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Side Projects ── -->
+<section id="side-projects">
+  <div class="container">
+    <div class="section-label reveal">Side Projects</div>
+    <h2 class="section-title reveal reveal-delay-1">Other things I've built</h2>
+    <div class="small-projects">
+      <div class="small-card reveal reveal-delay-2">
+        <h3>AI Personal Fitness Coach</h3>
+        <p>GenAI personal fitness coach that balances cardio with strength training based on user equipment constraints.</p>
+        <div class="card-footer">
+          <div class="project-tags">
+            <span>JavaScript</span><span>React</span><span>GenAI</span>
+          </div>
+          <a href="https://github.com/anaishowland/fitness-app" target="_blank" rel="noopener" class="project-link">View code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer id="contact">
+  <div class="container">
+    <h2 class="reveal">Get in touch</h2>
+    <p class="reveal reveal-delay-1"><a href="mailto:anaisaddad@gmail.com" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)">anaisaddad@gmail.com</a></p>
+    <div class="footer-links reveal reveal-delay-2">
+      <a href="https://github.com/anaishowland" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/anaishowland/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/AnaisHowland18" target="_blank" rel="noopener" aria-label="X / Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="mailto:anaisaddad@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+    <div class="copyright">&copy; 2025 Anais Howland</div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Mobile nav toggle
+document.querySelector('.nav-toggle').addEventListener('click', () => {
+  document.querySelector('nav ul').classList.toggle('open');
+});
+document.querySelectorAll('nav ul a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('nav ul').classList.remove('open'));
+});
+</script>
+</body>
+</html>
