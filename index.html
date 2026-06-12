@@ -221,10 +221,10 @@ section{padding:clamp(80px,12vh,140px) clamp(24px,5vw,80px)}
   transition:border-color .25s,color .25s;
 }
 .tech-pills span:hover{border-color:var(--accent);color:var(--accent)}
-.oasive-grid{
-  display:grid;grid-template-columns:1.1fr .9fr;
+.oasive-row{
+  display:grid;grid-template-columns:1fr 1fr;
   gap:clamp(28px,4vw,52px);align-items:center;
-  position:relative;z-index:1;
+  margin-bottom:36px;
 }
 .oasive-shot{
   border:1px solid var(--border);border-radius:12px;overflow:hidden;
@@ -232,7 +232,7 @@ section{padding:clamp(80px,12vh,140px) clamp(24px,5vw,80px)}
 }
 .oasive-shot img{width:100%;height:auto;display:block}
 @media(max-width:900px){
-  .oasive-grid{grid-template-columns:1fr}
+  .oasive-row{grid-template-columns:1fr}
 }
 
 /* ── Projects ── */
@@ -441,33 +441,35 @@ footer .copyright{color:var(--text-tertiary);font-size:.8rem}
     <div class="section-label reveal">What I'm Building Now</div>
     <h2 class="section-title reveal reveal-delay-1">Current work</h2>
     <a href="https://www.oasive.ai" target="_blank" rel="noopener" class="stealth-card reveal reveal-delay-2" style="text-decoration:none;color:inherit;display:block">
-      <div class="oasive-grid">
-        <div>
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
-            <img src="assets/oasive-logo.png" alt="Oasive logo" style="height:38px">
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.45rem">Oasive</span>
+      <div style="position:relative;z-index:1">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <img src="assets/oasive-logo.png" alt="Oasive logo" style="height:38px">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.45rem">Oasive</span>
+        </div>
+        <h3>The AI Operating System for Fixed Income</h3>
+        <div class="oasive-row">
+          <div>
+            <p class="desc" style="margin-bottom:20px">Oasive does the screening, research, valuation, and reporting work of a full analyst desk for the $140T fixed-income market. Screen millions of pools in plain English, validate an investment thesis against real data, and get analyst-grade research in minutes. I built the entire platform solo.</p>
+            <span class="project-link" style="display:inline-flex">oasive.ai <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
           </div>
-          <h3>The AI Operating System for Fixed Income</h3>
-          <p class="desc">Oasive does the screening, research, valuation, and reporting work of a full analyst desk for the $140T fixed-income market. Screen millions of pools in plain English, validate an investment thesis against real data, and get analyst-grade research in minutes. I built the entire platform solo.</p>
-          <span class="project-link" style="display:inline-flex;margin-bottom:28px">oasive.ai <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
-          <div class="tech-pills">
-            <span>Multi-Agent Orchestration</span>
-            <span>Claude Agent SDK</span>
-            <span>Agent Memory Systems</span>
-            <span>Prompt &amp; Context Engineering</span>
-            <span>Hybrid Search · pgvector</span>
-            <span>ML Prepayment Modeling</span>
-            <span>LightGBM + BigQuery ML</span>
-            <span>Feature Engineering · SHAP</span>
-            <span>Monte Carlo Pricing Engine</span>
-            <span>GCP · Cloud Run · BigQuery</span>
-            <span>Data Pipeline Engineering</span>
-            <span>Next.js + FastAPI</span>
-            <span>Docker · Vercel · LangSmith</span>
+          <div class="oasive-shot">
+            <img src="assets/oasive-website.jpg" alt="Oasive: your AI analyst for fixed income" loading="lazy" width="1400" height="795">
           </div>
         </div>
-        <div class="oasive-shot">
-          <img src="assets/oasive-website.jpg" alt="Oasive: your AI analyst for fixed income" loading="lazy" width="1400" height="795">
+        <div class="tech-pills">
+          <span>Multi-Agent Orchestration</span>
+          <span>Claude Agent SDK</span>
+          <span>Agent Memory Systems</span>
+          <span>Prompt &amp; Context Engineering</span>
+          <span>Hybrid Search · pgvector</span>
+          <span>ML Prepayment Modeling</span>
+          <span>LightGBM + BigQuery ML</span>
+          <span>Feature Engineering · SHAP</span>
+          <span>Monte Carlo Pricing Engine</span>
+          <span>GCP · Cloud Run · BigQuery</span>
+          <span>Data Pipeline Engineering</span>
+          <span>Next.js + FastAPI</span>
+          <span>Docker · Vercel · LangSmith</span>
         </div>
       </div>
     </a>
